@@ -32,15 +32,22 @@ This is a basic example which shows you how to solve a common problem:
 ``` r
 library(semfit)
 ## basic example code
-paragraph <- "We conducted multi-level structural equation modeling (ML-SEM) with the R package lavaan (Rosseel, 2012) to test our hypotheses, with all views on aging indicators loaded on a latent variable (i.e., negative views on aging)."
+paragraph <- "We conducted multi-level structural equation modeling (ML-SEM) with the R package lavaan (Rosseel, 2012) to test our hypotheses, with all views on aging indicators loaded on a latent variable (i.e., negative views on aging). The lavaan algorithm decomposed variance into within-person and between-person components, effectively centering daily-level predictors at the person mean without requiring manual centering (Rosseel, 2012). This ensures that the estimates of within-person effects reflect deviations from an individual’s average level across the study period. We modeled a contemporaneous (i.e., on the same day) indirect effect by multiplying the regression path between flow experience and negative views on aging by the path between negative views on aging and positive affect (and likewise for negative affect). To account for potential data anomaly such as non-normality and missing data, we applied maximum likelihood estimation with robust standard errors (Yuan and Bentler, 2000). We determined an acceptable model fit with the following thresholds: comparative fit index (CFI) > 0.950, Tucker-Lewis Index (TLI) > 0.900, root mean square error of approximation (RMSEA) < 0.080, and standardized root mean square residual (SRMR) < 0.080. (Hooper et al., 2008; Hu and Bentler, 1999). All coefficients reported were standardized at the corresponding level. To assess the proportion of variance attributable to within-person and between-person differences, we computed intraclass correlation coefficients (ICCs) for the key variables using a random intercept model (Hox et al., 2017). The ICC was calculated as the ratio of between-person variance to the total variance in a multilevel model (Nakagawa and Schielzeth, 2010). We also reran our major analyses with and without socio-demographic covariates including age (linear and quadratic terms to capture potential non-linear trends), chronic health conditions (measured by a 16-item checklist of physician-diagnosed chronic conditions, adapted from the SHARE Wave 2 health module, such as hypertension, high cholesterol, and asthma (Börsch-Supan et al., 2013), and retirement status, given that past studies have shown them to be related to key variables in the hypothetical model (e.g., Heo et al., 2010; Kim and Moen, 2002; Kornadt and Rothermund, 2015). We found highly similar statistical conclusions from both the unconditional and conditional models. For parsimony, we reported below the unconditional findings, with the conditional (i.e., with covariates) model output included in Supplemental Table 2 for interested readers."
 
 extract_fit(paragraph)
 #> $model_type
 #> [1] "SEM"    "ML-SEM"
 #> 
 #> $fit_indices
-#> [1] "No fit indices found"
+#> [1] "CFI"                                    
+#> [2] "Comparative fit index"                  
+#> [3] "TLI"                                    
+#> [4] "Tucker-Lewis Index"                     
+#> [5] "RMSEA"                                  
+#> [6] "root mean square error of approximation"
+#> [7] "SRMR"                                   
+#> [8] "standardized root mean square residual" 
 #> 
 #> $description
-#> [1] "No descriptive language found"
+#> [1] "acceptable"
 ```
